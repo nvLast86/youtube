@@ -1,8 +1,10 @@
 from googleapiclient.discovery import build
 import json
+import os
 
 class Channel():
-    api_key = youtube_api
+    api_key: str = os.getenv('YT_API_KEY')
+
 
     def __init__(self, channel_id):
         self.channel_id = channel_id
