@@ -3,8 +3,7 @@ import json
 import os
 
 class Channel():
-    api_key: str = os.getenv('YT_API_KEY')
-
+    api_key = 'AIzaSyC-4j13M0Xk0NnC4w4BVanF64fO5Lv0uUI'
 
     def __init__(self, channel_id):
         self.channel_id = channel_id
@@ -21,7 +20,7 @@ class Channel():
 
 
 def main():
-    vdud = Channel('UC1eFXmJNkjITxPFWTy6RsWg')
+    vdud = Channel('UCMCgOm8GZkHp8zJ6l7_hIuA')
     vdud.print_info()
 
 
