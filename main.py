@@ -15,7 +15,7 @@ class Channel:
         """Метод получения информации о канале в формате json"""
         with build('youtube', 'v3', developerKey=Channel.api_key) as channel_info:
             channel = channel_info.channels().list(id=self.channel_id, part='snippet,statistics').execute()
-            self.channel_json_info = json.dumps(channel, indent = 2, ensure_ascii=False)
+            self.channel_json_info = json.dumps(channel, indent=2, ensure_ascii=False)
 
     def print_info(self):
         print(self.channel_json_info)
