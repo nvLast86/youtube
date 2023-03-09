@@ -19,3 +19,11 @@ class Channel():
     def print_info(self):
         print(self.channel_json_info)
 
+
+def main():
+    vdud = Channel('UC1eFXmJNkjITxPFWTy6RsWg')
+    vdud.print_info()
+
+
+if __name__ == '__main__':
+    main()
