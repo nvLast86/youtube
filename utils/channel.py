@@ -21,6 +21,11 @@ class Channel:
             channel = channel_info.channels().list(id=self.__channel_id, part='snippet,statistics').execute()
             self.channel_json_info = json.dumps(channel, indent=2, ensure_ascii=False)
 
+    def get_json_by_id(self):
+        """ метод создает специальный объект для работы с API youtube"""
+        channel = self.get_service().channels().list(id=self.__id, part='snippet,statistics').execute()
+        self.json = channel
+
     def print_info(self):
         print(self.channel_json_info)
 
