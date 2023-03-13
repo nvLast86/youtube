@@ -1,6 +1,7 @@
 from googleapiclient.discovery import build
 import json
 
+
 class Channel:
     """Класс Channel для работы с каналами Youtube"""
     api_key = 'AIzaSyC-4j13M0Xk0NnC4w4BVanF64fO5Lv0uUI'
@@ -20,7 +21,8 @@ class Channel:
         return youtube.channels().list(id=self.__channel_id, part='snippet,statistics').execute()
 
     def print_info(self):
-        print(self.channel_json_info)
+        """метод ввыводит на печать содержимое json"""
+        print(json.dumps(self.channel_json_info, indent=2, ensure_ascii=False))
 
     @classmethod
     def get_service(self):
