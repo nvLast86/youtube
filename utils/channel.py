@@ -29,16 +29,6 @@ class Channel:
         channel = self.channel_info.channels().list(id=self.__id, part='snippet,statistics').execute()
         self.channel_json_info = channel
 
-    def get_channel_info_json(self):
-        """метод сохраняет все атрибуты объекта channel, кроме json в файл по адресу path"""
-        text = "["
-        for dic in self.__dict__:
-            if dic != 'json':
-                text += "{'" + str(dic) + "':'" + str(self.__dict__[dic]) + "'}, \n"
-        json_text = text[:-3] + "]"
-        with open(path, "w", encoding="UTF-8") as file:
-            file.write(str(json_text))
-
     def print_info(self):
         print(self.channel_json_info)
 
