@@ -6,14 +6,14 @@ class Channel:
     api_key = 'AIzaSyC-4j13M0Xk0NnC4w4BVanF64fO5Lv0uUI'
 
     def __init__(self, channel_id):
-        self.channel_id = channel_id
+        self.__channel_id = channel_id
         self.channel_json_info = ''
         self.get_channel_json_info()
 
     def get_channel_json_info(self):
         """Метод получения информации о канале в формате json"""
         with build('youtube', 'v3', developerKey=Channel.api_key) as channel_info:
-            channel = channel_info.channels().list(id=self.channel_id, part='snippet,statistics').execute()
+            channel = channel_info.channels().list(id=self.__channel_id, part='snippet,statistics').execute()
             self.channel_json_info = json.dumps(channel, indent=2, ensure_ascii=False)
 
     def print_info(self):
