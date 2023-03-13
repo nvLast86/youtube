@@ -16,7 +16,9 @@ class Channel:
         self.channel_view_count = self.channel_json_info['items'][0]['statistics']['viewCount']
 
     def get_json_by_id(self):
-        """ Получаем данные о канале по его id"""
+        """
+        Получение данных о канале по его id
+        """
         youtube = build('youtube', 'v3', developerKey='AIzaSyC-4j13M0Xk0NnC4w4BVanF64fO5Lv0uUI')
         return youtube.channels().list(id=self.__channel_id, part='snippet,statistics').execute()
 
@@ -25,11 +27,17 @@ class Channel:
         print(json.dumps(self.channel_json_info, indent=2, ensure_ascii=False))
 
     @classmethod
-    def get_service(self):
+    def get_service(cls):
+        """
+        Получение объекта для работы с API вне класса
+        """
         service = build('youtube', 'v3', developerKey='AIzaSyC-4j13M0Xk0NnC4w4BVanF64fO5Lv0uUI')
         return service
 
     def to_json(self, filename):
+        """
+        Cоздание json файла с данными по каналу
+        """
         data = {"title": self.channel_json_info}
         with open(f'{filename}', 'w', encoding="UTF-8") as file:
             json.dump(data, file, indent=2, ensure_ascii=False)
