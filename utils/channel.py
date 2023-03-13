@@ -21,7 +21,6 @@ class Channel:
 
 
     def print_info(self):
-
         print(self.channel_json_info)
 
     @classmethod
@@ -31,5 +30,5 @@ class Channel:
 
     def to_json(self, filename):
         data = {"title": self.channel_json_info}
-        with open(f'venv/{filename}', 'w', encoding="UTF-8") as file:
+        with open(f'{filename}', 'w', encoding="UTF-8") as file:
             json.dump(data, file, indent=2, ensure_ascii=False)
