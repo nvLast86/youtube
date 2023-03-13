@@ -9,6 +9,11 @@ class Channel:
         self.__channel_id = channel_id
         self.channel_json_info = ''
         self.get_channel_json_info()
+        self.title = self.json['items'][0]['snippet']['title']
+        self.channel_description = self.json['items'][0]['snippet']['description']
+        self.url = r'https://www.youtube.com/channel/' + self.__channel_id
+        self.video_count = self.json['items'][0]['statistics']['videoCount']
+        self.channel_view_count = self.json['items'][0]['statistics']['viewCount']
 
     def get_channel_json_info(self):
         """Метод получения информации о канале в формате json"""
