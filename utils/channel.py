@@ -15,10 +15,9 @@ class Channel:
         self.channel_view_count = self.channel_json_info['items'][0]['statistics']['viewCount']
 
     def get_json_by_id(self):
-        """ получаем данные о канале по его ip"""
+        """ Получаем данные о канале по его id"""
         youtube = build('youtube', 'v3', developerKey='AIzaSyC-4j13M0Xk0NnC4w4BVanF64fO5Lv0uUI')
         return youtube.channels().list(id=self.__channel_id, part='snippet,statistics').execute()
-
 
     def print_info(self):
         print(self.channel_json_info)
