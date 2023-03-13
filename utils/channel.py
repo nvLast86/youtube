@@ -24,3 +24,12 @@ class Channel:
 
         print(self.channel_json_info)
 
+    @classmethod
+    def get_service(self):
+        service = build('youtube', 'v3', developerKey='AIzaSyC-4j13M0Xk0NnC4w4BVanF64fO5Lv0uUI')
+        return service
+
+    def to_json(self, filename):
+        data = {"title": self.channel_json_info}
+        with open(f'venv/{filename}', 'w', encoding="UTF-8") as file:
+            json.dump(data, file, indent=2, ensure_ascii=False)
