@@ -42,3 +42,21 @@ class Channel:
         data = {"title": self.channel_json_info}
         with open(f'{filename}', 'w', encoding="UTF-8") as file:
             json.dump(data, file, indent=2, ensure_ascii=False)
+
+    def __str__(self):
+        """
+        Вывод информации о канале
+        """
+        return f'Youtube-канал: {self.title} с {self.subscribers_count} подписчиков.'
+
+    def __add__(self, other):
+        """
+        Сложение каналов по количеству подписчиков
+        """
+        return self.subscribers_count + other.subscribers_count
+
+    def __lt__(self, other):
+        return self.subscribers_count < other.subscribers_count
+
+    def __gt__(self, other):
+        return self.subscribers_count > other.subscribers_count
