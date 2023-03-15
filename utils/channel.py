@@ -24,7 +24,7 @@ class Channel:
         return youtube.channels().list(id=self.__channel_id, part='snippet,statistics').execute()
 
     def print_info(self):
-        """метод ввыводит на печать содержимое json"""
+        """Метод ввыводит на печать содержимое json"""
         print(json.dumps(self.channel_json_info, indent=2, ensure_ascii=False))
 
     @classmethod
@@ -56,7 +56,15 @@ class Channel:
         return self.subscribers_count + other.subscribers_count
 
     def __lt__(self, other):
+        """
+        Метод сравнения количества подписчиков.
+        Возвращает True, если аттрибут объекта меньше, чем у другого объекта
+        """
         return self.subscribers_count < other.subscribers_count
 
     def __gt__(self, other):
+        """
+        Метод сравнения количества подписчиков.
+        Возвращает True, если аттрибут объекта больше, чем у другого объекта
+        """
         return self.subscribers_count > other.subscribers_count
