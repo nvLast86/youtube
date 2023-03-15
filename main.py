@@ -11,19 +11,6 @@ def main():
     print(ch1 < ch2)
     print(ch1 > ch2)
 
-    #print(vdud.title)
-    #print(vdud.url)
-    #print(vdud.channel_view_count)
-
-    #vdud.__channel_id = 'New title'
-
-    #print(Channel.get_service())
-
-    #vdud.to_json('vdud.json')
-
-
-
-
 
 if __name__ == '__main__':
     main()
