@@ -1,17 +1,25 @@
 from utils.channel import Channel
 
+
 def main():
-    vdud = Channel('UCMCgOm8GZkHp8zJ6l7_hIuA')
+    ch1 = Channel('UCMCgOm8GZkHp8zJ6l7_hIuA')
+    ch2 = Channel('UC1eFXmJNkjITxPFWTy6RsWg')
 
-    print(vdud.title)
-    print(vdud.url)
-    print(vdud.channel_view_count)
+    print(ch1)
+    print(ch2)
 
-    vdud.__channel_id = 'New title'
+    print(ch1 < ch2)
+    print(ch1 > ch2)
 
-    print(Channel.get_service())
+    #print(vdud.title)
+    #print(vdud.url)
+    #print(vdud.channel_view_count)
 
-    vdud.to_json('vdud.json')
+    #vdud.__channel_id = 'New title'
+
+    #print(Channel.get_service())
+
+    #vdud.to_json('vdud.json')
 
 
 
