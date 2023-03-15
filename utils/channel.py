@@ -14,6 +14,7 @@ class Channel:
         self.url = r'https://www.youtube.com/channel/' + self.__channel_id
         self.video_count = self.channel_json_info['items'][0]['statistics']['videoCount']
         self.channel_view_count = self.channel_json_info['items'][0]['statistics']['viewCount']
+        self.subscribers_count = int(self.channel_json_info['items'][0]['statistics']['subscriberCount'])
 
     def get_json_by_id(self):
         """
