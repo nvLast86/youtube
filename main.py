@@ -10,6 +10,7 @@ def main():
 
     print(ch1 < ch2)
     print(ch1 > ch2)
+    print(ch1 + ch2)
 
 
 if __name__ == '__main__':
