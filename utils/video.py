@@ -26,3 +26,8 @@ class PLVideo(Video):
     def __repr__(self):
         return f'{self.title} ({self.playlist_name})'
 
+
+video1 = Video('9lO06Zxhu88')  # '9lO06Zxhu88' - это id видео из ютуб
+print(video1)
+video2 = PLVideo('BBotskuyw_M', 'PL7Ntiz7eTKwrqmApjln9u4ItzhDLRtPuD')
+print(video2)
