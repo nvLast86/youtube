@@ -25,7 +25,7 @@ class PLVideo(Video):
         self.playlist_name = playlist['items'][0]['snippet']['title']
 
     def __repr__(self):
-        return f'{self.title} ({self.playlist_name} с {self.likes_count} лайками)'
+        return f'{self.title} ({self.playlist_name}) с {self.likes_count} лайками)'
 
 
 video1 = Video('9lO06Zxhu88')  # '9lO06Zxhu88' - это id видео из ютуб
