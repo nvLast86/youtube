@@ -13,7 +13,12 @@ class Video():
 
 class PLVideo(Video):
     def __init__(self, video_id, playlist_id):
-        Video.__init__(self.video_id)
+        super().__init__(video_id)
         self.playlist_id = playlist_id
+        youtube = build('youtube', 'v3', developerKey='AIzaSyC-4j13M0Xk0NnC4w4BVanF64fO5Lv0uUI')
+        playlist = youtube.playlists().list(id=self.playlist_id, part='snippet').execute()
+        self.playlist_name = playlist['items'][0]['snippet']['title']
 
+    def __repr__(self):
+        return f'{self.title} ({self.playlist_name})'
 
