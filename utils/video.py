@@ -11,5 +11,9 @@ class Video():
         self.views_count = self.video_response['items'][0]['statistics']['viewCount']
         self.likes_count = self.video_response['items'][0]['statistics']['likeCount']
 
+class PLVideo(Video):
+    def __init__(self, video_id, playlist_id):
+        Video.__init__(self.video_id)
+        self.playlist_id = playlist_id
 
 
