@@ -16,3 +16,11 @@ class PlayList(AdditionalService):
         self.video_ids = [video['contentDetails']['videoId'] for video in self.playlist_videos['items']]
         self.video_response = self.youtube.videos().list(part='contentDetails,statistics', id=','
                                                          .join(self.video_ids)).execute()
+
+    def total_duration(self):
+        total_duration = timedelta()
+        for video in self.video_response['items']:
+            iso_formation_duration = video['contentDetails']['duration']
+            duration = isodate.parse_duration(iso_formation_duration)
+            total_duration += duration
+        return total_duration
