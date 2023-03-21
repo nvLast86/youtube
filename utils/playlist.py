@@ -18,6 +18,16 @@ class PlayList(YouTube):
         self.video_response = self.youtube.videos().list(part='contentDetails,statistics', id=','
                                                          .join(self.video_ids)).execute()
 
+    def get_youtube_api_key(self):
+        api_key = os.environ.get('YT_API_KEY')
+        return api_key
+
+    def get_youtube_object(self):
+        youtube = build('youtube', 'v3', developerKey=self.get_youtube_api_key())
+        return youtube
+
+
+    @property
     def total_duration(self):
         total_duration = timedelta()
         for video in self.video_response['items']:
