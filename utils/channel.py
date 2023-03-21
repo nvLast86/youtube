@@ -1,10 +1,10 @@
 from googleapiclient.discovery import build
 import json
+from additional_service import AdditionalService
 
 
-class Channel:
+class Channel(AdditionalService):
     """Класс Channel для работы с каналами Youtube"""
-    api_key = 'AIzaSyC-4j13M0Xk0NnC4w4BVanF64fO5Lv0uUI'
 
     def __init__(self, channel_id):
         self.__channel_id = channel_id
@@ -20,20 +20,11 @@ class Channel:
         """
         Получение данных о канале по его id
         """
-        youtube = build('youtube', 'v3', developerKey='AIzaSyC-4j13M0Xk0NnC4w4BVanF64fO5Lv0uUI')
-        return youtube.channels().list(id=self.__channel_id, part='snippet,statistics').execute()
+        return self.youtube.channels().list(id=self.__channel_id, part='snippet,statistics').execute()
 
     def print_info(self):
         """Метод ввыводит на печать содержимое json"""
         print(json.dumps(self.channel_json_info, indent=2, ensure_ascii=False))
-
-    @classmethod
-    def get_service(cls):
-        """
-        Получение объекта для работы с API вне класса
-        """
-        service = build('youtube', 'v3', developerKey='AIzaSyC-4j13M0Xk0NnC4w4BVanF64fO5Lv0uUI')
-        return service
 
     def to_json(self, filename):
         """
