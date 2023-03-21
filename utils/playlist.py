@@ -19,16 +19,24 @@ class PlayList(YouTube):
                                                          .join(self.video_ids)).execute()
 
     def get_youtube_api_key(self):
+        """
+        Метод получения API_KEY для работы с Youtube
+        """
         api_key = os.environ.get('YT_API_KEY')
         return api_key
 
     def get_youtube_object(self):
+        """
+        Метод получения объекта Youtube
+        """
         youtube = build('youtube', 'v3', developerKey=self.get_youtube_api_key())
         return youtube
 
-
     @property
     def total_duration(self):
+        """
+        Метод получения суммарной длительности всех видео канала
+        """
         total_duration = timedelta()
         for video in self.video_response['items']:
             iso_formation_duration = video['contentDetails']['duration']
