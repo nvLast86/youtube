@@ -1,9 +1,10 @@
 from googleapiclient.discovery import build
 import json
-from additional_service import AdditionalService
+from youtube import YouTube
+import os
 
 
-class Channel(AdditionalService):
+class Channel(YouTube):
     """Класс Channel для работы с каналами Youtube"""
 
     def __init__(self, channel_id):
@@ -20,7 +21,7 @@ class Channel(AdditionalService):
         """
         Получение данных о канале по его id
         """
-        return self.youtube.channels().list(id=self.__channel_id, part='snippet,statistics').execute()
+        return self.get_youtube_object().channels().list(id=self.__channel_id, part='snippet,statistics').execute()
 
     def print_info(self):
         """Метод ввыводит на печать содержимое json"""
@@ -39,6 +40,20 @@ class Channel(AdditionalService):
         Вывод информации о канале
         """
         return f'Youtube-канал: {self.title} с {self.subscribers_count} подписчиков.'
+
+    def get_youtube_api_key(self):
+        """
+        Метод получения API_KEY для работы с Youtube
+        """
+        api_key = os.environ.get('YT_API_KEY')
+        return api_key
+
+    def get_youtube_object(self):
+        """
+        Метод получения объекта Youtube
+        """
+        youtube = build('youtube', 'v3', developerKey=self.get_youtube_api_key())
+        return youtube
 
     def __add__(self, other):
         """
