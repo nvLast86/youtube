@@ -10,11 +10,17 @@ class Video(YouTube):
 
     def __init__(self, video_id):
         self.video_id = video_id
-        self.video_response = self.get_youtube_object().videos().\
-            list(part='snippet,statistics', id=self.video_id).execute()
-        self.title = self.video_response['items'][0]['snippet']['title']
-        self.views_count = self.video_response['items'][0]['statistics']['viewCount']
-        self.likes_count = self.video_response['items'][0]['statistics']['likeCount']
+        try:
+            self.video_response = self.get_youtube_object().videos().\
+                list(part='snippet,statistics', id=self.video_id).execute()
+            self.title = self.video_response['items'][0]['snippet']['title']
+            self.views_count = self.video_response['items'][0]['statistics']['viewCount']
+            self.likes_count = self.video_response['items'][0]['statistics']['likeCount']
+        except Exception:
+            self.video_response = None
+            self.title = None
+            self.views_count = None
+            self.likes_count = None
 
     def __repr__(self):
         return f'{self.title}'
